@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tycoding.mapper.SeckillMapper">
+
+    <select id="findAll" resultType="Seckill">
+        SELECT * FROM seckill
+    </select>
+
+    <select id="findById" resultType="Seckill">
+        SELECT * FROM seckill WHERE seckillId = #{id}
+    </select>
+
+    <update id="reduceStock">
+        UPDATE seckill
+        SET stockCount = stockCount - 1
+        WHERE seckillId = #{seckillId}
+        AND startTime &lt;= #{killTime}
+        AND endTime &gt;= #{killTime}
+        AND stockCount &gt; 0
+    </update>
+
+</mapper>

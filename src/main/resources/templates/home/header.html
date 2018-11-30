@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<el-menu th:fragment="header" mode="horizontal" :default-active="activeIndex">
+    <el-menu-item index="0" id="logo">Spring Boot入门</el-menu-item>
+    <el-menu-item index="1"><a href="/index">首页</a></el-menu-item>
+    <el-menu-item index="2"><a href="/goods">商品列表</a></el-menu-item>
+    <el-menu-item id="author" index="3">
+        <img class="el-tooltip" src="http://img.zcool.cn/community/010b0456bc940832f875520fbe9e6d.png"/>
+        <el-dropdown>
+            <span class="el-dropdown-link" th:text="${session.user.username}">username<i class="el-icon-arrow-down el-icon--right"></i></span>
+            <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>首页</el-dropdown-item>
+                <el-dropdown-item><a href="https://github.com/TyCoding" target="_blank">GitHub</a></el-dropdown-item>
+                <el-dropdown-item><a href="http://tycoding.cn/" target="_blank">Blog</a></el-dropdown-item>
+                <el-dropdown-item divided><a href="/logout">退出</a></el-dropdown-item>
+            </el-dropdown-menu>
+        </el-dropdown>
+    </el-menu-item>
+    <el-menu-item index="4"><a href="/seckill">秒杀商品</a> </el-menu-item>
+    <el-menu-item index="5" sec:authorize="废物"><a href="www.baidu.com">管理员模块</a> </el-menu-item>
+    <el-menu-item index="5" sec:authorize="妹妹"><a href="www.baidu.com">普通用户模块</a> </el-menu-item>
+</el-menu>
+<!--
+<div th:fragment="header">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">SpringBoot-Seckill 秒杀系统</a>
+            </div>
+        </div>
+    </nav>
+</div>
+-->
+</body>
+</html>
