@@ -15,7 +15,7 @@ public class ErrorInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request,HttpServletResponse response,Object handler,
                            ModelAndView modelAndView) throws Exception{
-        System.out.println(">>>MyInterceptor>>>请求处理之后调用,视图被渲染之前(Controller调用之后)");
+        System.out.println(">>>MyInterceptor>>>请求处理之后调用,视图被渲染之前(在Controller调用之后)");
         if(response.getStatus()==500){
             modelAndView.setViewName("/errorpage/500");
         }else if(response.getStatus()==404){
